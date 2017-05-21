@@ -33,19 +33,19 @@ class LoggerConfigurator(object):
     :param logging.FileHandler __file_handler: Shared file handler.
     :param logging.NullHandler __null_handler: Shared NULL handler.
     """
-    __HANDLER_NAME = u"mallet_handler"
-    __LOGGER_FILE_PATH = os.path.expanduser(u"~/Library/Logs/mallet.log")
-    __LOGGER_NAMES = [u"mallet.logger",
-                      u"mallet.class_dump",
-                      u"mallet.helpers",
-                      u"mallet.type_cache",
-                      u"mallet.loader",
-                      u"mallet.common.SummaryBase",
+    __HANDLER_NAME = "mallet_handler"
+    __LOGGER_FILE_PATH = os.path.expanduser("~/Library/Logs/mallet.log")
+    __LOGGER_NAMES = ["mallet.logger",
+                      "mallet.class_dump",
+                      "mallet.helpers",
+                      "mallet.type_cache",
+                      "mallet.loader",
+                      "mallet.common.SummaryBase",
                       ]
 
     def __init__(self):
         super(LoggerConfigurator, self).__init__()
-        self.__formatter = logging.Formatter(u"%(asctime)s - %(levelname)-8s - %(name)s - %(message)s")
+        self.__formatter = logging.Formatter("%(asctime)s - %(levelname)-8s - %(name)s - %(message)s")
         self.__file_handler = logging.FileHandler(self.__LOGGER_FILE_PATH)
         self.__file_handler.setFormatter(self.__formatter)
         self.__null_handler = logging.NullHandler()

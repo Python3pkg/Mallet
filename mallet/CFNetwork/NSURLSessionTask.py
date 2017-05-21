@@ -25,8 +25,8 @@
 from .. import helpers
 from ..common import SummaryBase
 from ..Foundation import NSObject
-import NSURLRequest
-import NSURLResponse
+from . import NSURLRequest
+from . import NSURLResponse
 
 NSURLSessionTaskStateRunning = 0
 NSURLSessionTaskStateSuspended = 1

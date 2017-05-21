@@ -23,8 +23,8 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from .. import helpers
-import UIControl
-import UILabel
+from . import UIControl
+from . import UILabel
 
 
 class UITextFieldSyntheticProvider(UIControl.UIControlSyntheticProvider):

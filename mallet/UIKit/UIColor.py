@@ -61,10 +61,10 @@ def summary_provider(value_obj, internal_dict):
     class_name = helpers.get_object_class_name(value_obj)
 
     if class_name == "UIDeviceWhiteColor" or class_name == "UICachedDeviceWhiteColor":
-        import UIDeviceWhiteColor
+        from . import UIDeviceWhiteColor
         return helpers.generic_summary_provider(value_obj, internal_dict, UIDeviceWhiteColor.UIDeviceWhiteColorSyntheticProvider)
     elif class_name == "UIDeviceRGBColor" or class_name == "UICachedDeviceRGBColor":
-        import UIDeviceRGBColor
+        from . import UIDeviceRGBColor
         return helpers.generic_summary_provider(value_obj, internal_dict, UIDeviceRGBColor.UIDeviceRGBColorSyntheticProvider)
     else:
         return helpers.generic_summary_provider(value_obj, internal_dict, UIColorSyntheticProvider)

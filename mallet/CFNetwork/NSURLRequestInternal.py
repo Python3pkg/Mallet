@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..Foundation import NSObject
-import CFURLRequest
+from . import CFURLRequest
 
 
 class NSURLRequestInternalSyntheticProvider(NSObject.NSObjectSyntheticProvider):

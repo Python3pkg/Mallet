@@ -25,7 +25,7 @@
 import json
 import os
 import logging
-import logger
+from . import logger
 
 
 class_dumps_folder_name = "class_dumps"
@@ -197,7 +197,7 @@ class ClassDumpManager(object):
                 os.makedirs(folder_path)
 
         # Save every Module.
-        for module_name, module in self.modules.iteritems():
+        for module_name, module in self.modules.items():
             module_path = os.path.join(folder_path, module.name, class_dumps_folder_name)
             module.save_to_folder(module_path)
 
@@ -243,7 +243,7 @@ class Module(object):
         :rtype: list[str]
         """
         s = set()
-        for name, architecture in self.architectures.iteritems():
+        for name, architecture in self.architectures.items():
             s = s.union(set(architecture.all_class_names()))
         return list(s)
 
@@ -317,7 +317,7 @@ class Module(object):
             class_data = dict()
             class_file_name = None
             # Get class data from all architectures.
-            for name, architecture in self.architectures.iteritems():
+            for name, architecture in self.architectures.items():
                 c = architecture.get_class(class_name)
                 class_data[architecture.name] = c.json_data()
                 class_file_name = c.get_file_name()
@@ -329,7 +329,7 @@ class Module(object):
             class_file_path = os.path.join(folder_path, class_file_name)
             with open(class_file_path, "w") as f:
                 json.dump(class_data, f, sort_keys=True, indent=2, separators=(",", ":"))
-                print("Saving {}.{}.".format(self.name, class_name))
+                print(("Saving {}.{}.".format(self.name, class_name)))
 
         # Save module map.
         module_map_file_path = os.path.join(folder_path, module_map_file_name)
@@ -345,7 +345,7 @@ class Module(object):
         module_map_file_path = os.path.join(self.dir_path, module_map_file_name)
         if not os.path.exists(module_map_file_path):
             log.error("Module: _read_module_map: Cannot find module map \"{}\" at \"{}\".".format(self.name, module_map_file_path))
-            raise StandardError()
+            raise Exception()
 
         # Reads module map into memory.
         with open(module_map_file_path, "r") as f:
@@ -428,7 +428,7 @@ class Architecture(object):
         :return: All class names.
         :rtype: list[str]
         """
-        return self.classes.keys()
+        return list(self.classes.keys())
 
     def get_class(self, name):
         """

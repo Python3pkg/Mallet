@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..Foundation import NSObject
-import NSURLConnectionInternal
+from . import NSURLConnectionInternal
 
 
 class NSURLConnectionSyntheticProvider(NSObject.NSObjectSyntheticProvider):

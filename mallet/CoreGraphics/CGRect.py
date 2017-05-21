@@ -23,8 +23,8 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from ..common import SummaryBase
-import CGPoint
-import CGSize
+from . import CGPoint
+from . import CGSize
 
 
 class CGRectSyntheticProvider(SummaryBase.SummaryBaseSyntheticProvider):

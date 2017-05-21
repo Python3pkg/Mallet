@@ -24,8 +24,8 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import UIView
-import UILabel
+from . import UIView
+from . import UILabel
 
 
 class UITableViewCellSyntheticProvider(UIView.UIViewSyntheticProvider):

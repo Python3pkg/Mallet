@@ -26,8 +26,8 @@ from .. import helpers
 from ..common import SummaryBase
 from ..Foundation import NSObject
 from ..Foundation import NSOperationQueue
-import NSURLConnection
-import NSURLRequest
+from . import NSURLConnection
+from . import NSURLRequest
 
 
 class NSURLConnectionInternalSyntheticProvider(NSObject.NSObjectSyntheticProvider):

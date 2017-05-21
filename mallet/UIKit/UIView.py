@@ -25,7 +25,7 @@
 from .. import helpers
 from ..common import SummaryBase
 from ..QuartzCore import CALayer
-import UIResponder
+from . import UIResponder
 
 
 class Rect(object):

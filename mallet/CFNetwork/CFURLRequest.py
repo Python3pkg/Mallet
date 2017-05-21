@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import CFHTTPMessage
+from . import CFHTTPMessage
 
 
 class CFURLRequestSyntheticProvider(SummaryBase.SummaryBaseSyntheticProvider):

@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..Foundation import NSObject
-import SKProductsResponseInternal
+from . import SKProductsResponseInternal
 
 
 class SKProductsResponseSyntheticProvider(NSObject.NSObjectSyntheticProvider):

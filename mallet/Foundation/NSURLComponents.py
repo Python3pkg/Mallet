@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import NSObject
+from . import NSObject
 
 
 class NSURLComponentsSyntheticProvider(NSObject.NSObjectSyntheticProvider):

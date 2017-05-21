@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import NSURLSessionTask
+from . import NSURLSessionTask
 
 
 class NSCFLocalSessionTaskSyntheticProvider(NSURLSessionTask.NSURLSessionTaskSyntheticProvider):

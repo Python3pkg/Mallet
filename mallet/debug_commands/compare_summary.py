@@ -145,8 +145,8 @@ def compare_summary(debugger, command, result, internal_dict):
         else:
             frame.EvaluateExpression("{} = @1".format(result_name), options)
     else:
-        print >> result, "object   : {}".format(summary)
-        print >> result, "should be: {}".format(compare_description)
+        print("object   : {}".format(summary), file=result)
+        print("should be: {}".format(compare_description), file=result)
         if use_swift:
             options.SetLanguage(lldb.eLanguageTypeSwift)
             frame.EvaluateExpression("{} = 0".format(result_name), options)

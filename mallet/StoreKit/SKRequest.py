@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..Foundation import NSObject
-import SKRequestInternal
+from . import SKRequestInternal
 
 
 class SKRequestSyntheticProvider(NSObject.NSObjectSyntheticProvider):

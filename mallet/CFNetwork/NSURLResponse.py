@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..Foundation import NSObject
-import NSURLResponseInternal
+from . import NSURLResponseInternal
 
 
 class NSURLResponseSyntheticProvider(NSObject.NSObjectSyntheticProvider):

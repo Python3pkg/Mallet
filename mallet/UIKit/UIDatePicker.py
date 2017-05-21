@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import UIControl
+from . import UIControl
 
 
 class UIDatePickerSyntheticProvider(UIControl.UIControlSyntheticProvider):

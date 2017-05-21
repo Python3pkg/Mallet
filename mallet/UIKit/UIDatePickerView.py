@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import UIPickerView
+from . import UIPickerView
 
 
 class UIDatePickerViewSyntheticProvider(UIPickerView.UIPickerViewSyntheticProvider):

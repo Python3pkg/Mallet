@@ -24,9 +24,9 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import NSObject
-import NSOperation
-import NSOperationQueue
+from . import NSObject
+from . import NSOperation
+from . import NSOperationQueue
 
 NSQualityOfServiceUserInteractive = 0x21
 NSQualityOfServiceUserInitiated = 0x19

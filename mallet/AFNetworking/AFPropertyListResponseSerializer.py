@@ -25,7 +25,7 @@
 from .. import helpers
 from ..Foundation import NSPropertyListSerialization
 from ..common import SummaryBase
-import AFHTTPResponseSerializer
+from . import AFHTTPResponseSerializer
 
 
 class AFPropertyListResponseSerializerSyntheticProvider(AFHTTPResponseSerializer.AFHTTPResponseSerializerSyntheticProvider):

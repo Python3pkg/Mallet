@@ -25,11 +25,11 @@
 import lldb
 import os
 import logging
-import logger
+from . import logger
 import imp
-import class_dump
-import type_cache
-import helpers
+from . import class_dump
+from . import type_cache
+from . import helpers
 import yaml
 import sys
 
@@ -50,9 +50,9 @@ class Loader(object):
     """
     __PACKAGE_NAME = helpers.get_first_package_name(__name__)
     __PACKAGE_DIR_PATH = helpers.get_package_dir_path(__name__, __file__)
-    __USER_CONFIG_FILE_PATH = u"~/.lldb/mallet.yml"
-    __DEFAULT_CONFIG_FILE_NAME = u"config.yml"
-    __PACKAGE_CONFIG_FILE_NAME = u"config.yml"
+    __USER_CONFIG_FILE_PATH = "~/.lldb/mallet.yml"
+    __DEFAULT_CONFIG_FILE_NAME = "config.yml"
+    __PACKAGE_CONFIG_FILE_NAME = "config.yml"
     __MODULE_FILES_EXTENSIONS = [".py"]
     __MODULE_INIT_METHOD = "lldb_init"
 
@@ -88,16 +88,16 @@ class Loader(object):
             except ValueError:
                 # Cannot open YAML file.
                 if len(log.handlers) == 0:
-                    print(u"Cannot open default config file \"{}\".".format(default_config_path))
+                    print(("Cannot open default config file \"{}\".".format(default_config_path)))
                 else:
-                    log.critical(u"Cannot open default config file \"{}\".".format(default_config_path))
+                    log.critical("Cannot open default config file \"{}\".".format(default_config_path))
                 return dict()
         else:
             # Missing YAML config.
             if len(log.handlers) == 0:
-                print(u"Cannot find default config file \"{}\".".format(default_config_path))
+                print(("Cannot find default config file \"{}\".".format(default_config_path)))
             else:
-                log.critical(u"Cannot find default config file \"{}\".".format(default_config_path))
+                log.critical("Cannot find default config file \"{}\".".format(default_config_path))
             return dict()
 
     @classmethod
@@ -121,16 +121,16 @@ class Loader(object):
             except ValueError:
                 # Cannot open user YAML.
                 if len(log.handlers) == 0:
-                    print(u"Cannot open user configuration \"{}\".".format(config_path))
+                    print(("Cannot open user configuration \"{}\".".format(config_path)))
                 else:
-                    log.warning(u"Cannot open user configuration \"{}\".".format(config_path))
+                    log.warning("Cannot open user configuration \"{}\".".format(config_path))
                 return dict()
         else:
             # Missing YAML config.
             if len(log.handlers) == 0:
-                print(u"Missing user configuration \"{}\".".format(config_path))
+                print(("Missing user configuration \"{}\".".format(config_path)))
             else:
-                log.warning(u"Missing user configuration \"{}\".".format(config_path))
+                log.warning("Missing user configuration \"{}\".".format(config_path))
             return dict()
 
     @classmethod
@@ -218,15 +218,15 @@ class Loader(object):
 
         # Clean log file.
         clean_log_file = False
-        if u"clean_logs" in user_configuration:
-            clean_log_file = bool(user_configuration[u"clean_logs"])
+        if "clean_logs" in user_configuration:
+            clean_log_file = bool(user_configuration["clean_logs"])
         if clean_log_file:
             logger.get_shared_logger_configurator().clean_log_file()
 
         # Configure logger.
         configure_loggers = False
-        if u"logging" in user_configuration:
-            configure_loggers = bool(user_configuration[u"logging"])
+        if "logging" in user_configuration:
+            configure_loggers = bool(user_configuration["logging"])
         if configure_loggers:
             logger.get_shared_logger_configurator().configure_loggers()
         else:
@@ -237,12 +237,12 @@ class Loader(object):
 
         # Load builtin packages.
         builtin_packages = None
-        if u"builtin_packages" in user_configuration and isinstance(user_configuration[u"builtin_packages"], list):
-            builtin_packages = user_configuration[u"builtin_packages"]
+        if "builtin_packages" in user_configuration and isinstance(user_configuration["builtin_packages"], list):
+            builtin_packages = user_configuration["builtin_packages"]
             """:type: list[str]"""
 
         if builtin_packages is None:
-            builtin_packages = default_config[u"builtin_packages"]
+            builtin_packages = default_config["builtin_packages"]
             """:type: list[str]"""
 
         if builtin_packages is not None:
@@ -250,22 +250,22 @@ class Loader(object):
                 self.__load_package(package_name)
 
         # Load user or builtin packages (only from user config).
-        if u"packages" in user_configuration and isinstance(user_configuration[u"packages"], list):
-            additional_builtin_packages = user_configuration[u"packages"]
+        if "packages" in user_configuration and isinstance(user_configuration["packages"], list):
+            additional_builtin_packages = user_configuration["packages"]
             """:type: list[str]"""
             for package_name in additional_builtin_packages:
                 self.__load_package(package_name)
 
-        log.debug(u"Loaded.")
+        log.debug("Loaded.")
 
     def __reload_internal_scripts(self):
         """
         Reloads builtin scripts, like class_dump, helpers, loader, logger and type_cache.
         """
-        scripts = [u"loader", u"class_dump", u"helpers", u"logger", u"type_cache"]
+        scripts = ["loader", "class_dump", "helpers", "logger", "type_cache"]
         for script in scripts:
-            script_file_path = os.path.join(self.__PACKAGE_DIR_PATH, script) + u".py"
-            script_module_path = u".".join([self.__PACKAGE_NAME, script])
+            script_file_path = os.path.join(self.__PACKAGE_DIR_PATH, script) + ".py"
+            script_module_path = ".".join([self.__PACKAGE_NAME, script])
             imp.load_source(script_module_path, script_file_path)
 
     def __load_package(self, package):
@@ -294,8 +294,8 @@ class Loader(object):
                 return
 
         # Check config file path.
-        assert package_path, u"Empty package path."
-        assert package_config_path, u"Empty package config file path."
+        assert package_path, "Empty package path."
+        assert package_config_path, "Empty package config file path."
 
         # Append loaded packages.
         self.loaded_packages.append(package)
@@ -305,22 +305,22 @@ class Loader(object):
             with open(package_config_path) as package_config_file:
                 package_config = yaml.load(package_config_file)
         except ValueError:
-            log.warning(u"Cannot read package config file \"{}\".".format(package_config_path))
+            log.warning("Cannot read package config file \"{}\".".format(package_config_path))
             return
 
         # Read configuration.
-        class_dumps = package_config[u"class_dumps"] if u"class_dumps" in package_config else None
-        lldb_init = package_config[u"lldb_init"] if u"lldb_init" in package_config else None
-        dependencies = package_config[u"dependencies"] if u"dependencies" in package_config else None
-        modules = package_config[u"modules"] if u"modules" in package_config else None
-        load_all_modules = package_config[u"load_all_modules"] if u"load_all_modules" in package_config else None
+        class_dumps = package_config["class_dumps"] if "class_dumps" in package_config else None
+        lldb_init = package_config["lldb_init"] if "lldb_init" in package_config else None
+        dependencies = package_config["dependencies"] if "dependencies" in package_config else None
+        modules = package_config["modules"] if "modules" in package_config else None
+        load_all_modules = package_config["load_all_modules"] if "load_all_modules" in package_config else None
 
         # Get package name from package path.
         package_name = os.path.basename(package)
 
         # Get full package name.
         if builtin:
-            full_package_name = u".".join([self.__PACKAGE_NAME, package_name])
+            full_package_name = ".".join([self.__PACKAGE_NAME, package_name])
         else:
             full_package_name = package_name
 
@@ -329,7 +329,7 @@ class Loader(object):
             for dependency in dependencies:
                 self.__load_package(dependency)
 
-        log.info(u"Loading {} package \"{}\".".format(u"builtin" if builtin else u"custom", package))
+        log.info("Loading {} package \"{}\".".format("builtin" if builtin else "custom", package))
 
         # Load modules in order.
         all_package_modules = self.__get_modules_at_path(package_path)
@@ -348,24 +348,24 @@ class Loader(object):
         # Load LLDB init.
         if lldb_init is not None:
             # Convert string to list of strings.
-            if isinstance(lldb_init, str) or isinstance(lldb_init, unicode):
+            if isinstance(lldb_init, str) or isinstance(lldb_init, str):
                 lldb_init = [lldb_init]
             for li in lldb_init:
                 lldb_init_path = os.path.join(package_path, li)
                 if os.path.exists(lldb_init_path):
-                    log.debug(u"Loading lldb init \"{}\".".format(lldb_init_path))
+                    log.debug("Loading lldb init \"{}\".".format(lldb_init_path))
                     self.debugger.HandleCommand("command source -s true {}".format(lldb_init_path))
                 else:
-                    log.warning(u"Cannot find lldb init file \"{}\".".format(lldb_init_path))
+                    log.warning("Cannot find lldb init file \"{}\".".format(lldb_init_path))
 
         # Register class dump module.
         if class_dumps is not None:
             class_dumps_path = os.path.join(package_path, class_dumps)
             if os.path.exists(class_dumps_path):
-                log.debug(u"Registering class dump module \"{}\".".format(class_dumps_path))
+                log.debug("Registering class dump module \"{}\".".format(class_dumps_path))
                 get_shared_lazy_class_dump_manager().register_module(package, class_dumps_path)
             else:
-                log.warning(u"Cannot find class dump folder \"{}\".".format(class_dumps_path))
+                log.warning("Cannot find class dump folder \"{}\".".format(class_dumps_path))
 
     def __load_module(self, full_package_name, package_path, module_name):
         """
@@ -391,13 +391,13 @@ class Loader(object):
         """
         log = logging.getLogger(__name__)
         # Load module at path.
-        full_module_name = u".".join([full_package_name, module_name])
+        full_module_name = ".".join([full_package_name, module_name])
         self.debugger.HandleCommand("script import {}".format(full_module_name))
 
         # (Re)Load module.
-        module_file_path = os.path.join(package_path, module_name) + u".py"
+        module_file_path = os.path.join(package_path, module_name) + ".py"
         if os.path.exists(module_file_path):
-            log.debug(u"Loading module \"{}\" at path \"{}\".".format(full_module_name, module_file_path))
+            log.debug("Loading module \"{}\" at path \"{}\".".format(full_module_name, module_file_path))
             module = imp.load_source(full_module_name, module_file_path)
 
             # Execute init method.
@@ -406,7 +406,7 @@ class Loader(object):
                 init_method = getattr(module, self.__MODULE_INIT_METHOD)
                 init_method(self.debugger, self.internal_dict)
         else:
-            log.warning(u"Cannot find module at path \"{}\".".format(module_file_path))
+            log.warning("Cannot find module at path \"{}\".".format(module_file_path))
 
     def __load_module_2(self, full_package_name, package_path, module_name):
         """
@@ -452,9 +452,9 @@ class Loader(object):
         """:type: file"""
         try:
             # Find and load module.
-            full_module_name = u".".join([full_package_name, module_name])
+            full_module_name = ".".join([full_package_name, module_name])
             fp, pathname, description = imp.find_module(module_name, [package_path])
-            log.debug(u"Loading module \"{}\" at path \"{}\".".format(full_module_name, pathname))
+            log.debug("Loading module \"{}\" at path \"{}\".".format(full_module_name, pathname))
             m = imp.load_module(full_module_name, fp, pathname, description)
 
             # Add module to package if exists.
@@ -468,7 +468,7 @@ class Loader(object):
                 init_method(self.debugger, self.internal_dict)
 
         except ImportError:
-            log.warning(u"Cannot find module \"{}\" at path \"{}\".".format(module_name, package_path))
+            log.warning("Cannot find module \"{}\" at path \"{}\".".format(module_name, package_path))
         finally:
             # Closing file.
             if fp:
@@ -489,8 +489,8 @@ class Loader(object):
         log = logging.getLogger(__name__)
 
         # Load module at path.
-        full_module_name = u".".join([full_package_name, module_name])
-        log.debug(u"Loading module \"{}\".".format(full_module_name))
+        full_module_name = ".".join([full_package_name, module_name])
+        log.debug("Loading module \"{}\".".format(full_module_name))
         self.debugger.HandleCommand("script import {}".format(full_module_name))
 
         if full_module_name in sys.modules:
@@ -520,7 +520,7 @@ def get_shared_lazy_class_dump_manager():
     if __shared_lazy_class_dump_manager is None:
         __shared_lazy_class_dump_manager = class_dump.LazyClassDumpManager()
         log = logging.getLogger(__name__)
-        log.debug(u"Creating shared class dump manager.")
+        log.debug("Creating shared class dump manager.")
     return __shared_lazy_class_dump_manager
 
 
@@ -537,5 +537,5 @@ def get_shared_loader(debugger, internal_dict):
     if __shared_loader is None:
         __shared_loader = Loader(debugger, internal_dict)
         log = logging.getLogger(__name__)
-        log.debug(u"Creating shared Loader.")
+        log.debug("Creating shared Loader.")
     return __shared_loader

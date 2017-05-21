@@ -23,8 +23,8 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from ..common import SummaryBase
-import CADoublePoint
-import CADoubleRect
+from . import CADoublePoint
+from . import CADoubleRect
 
 
 class CALayerInternalLayerSyntheticProvider(SummaryBase.SummaryBaseSyntheticProvider):

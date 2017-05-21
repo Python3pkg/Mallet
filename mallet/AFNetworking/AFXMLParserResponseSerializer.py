@@ -23,7 +23,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from .. import helpers
-import AFHTTPResponseSerializer
+from . import AFHTTPResponseSerializer
 
 
 class AFXMLParserResponseSerializerSyntheticProvider(AFHTTPResponseSerializer.AFHTTPResponseSerializerSyntheticProvider):

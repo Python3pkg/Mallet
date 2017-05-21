@@ -25,7 +25,7 @@
 from .. import helpers
 from ..Foundation import NSXMLDocument
 from ..common import SummaryBase
-import AFHTTPResponseSerializer
+from . import AFHTTPResponseSerializer
 
 
 class AFXMLDocumentResponseSerializerSyntheticProvider(AFHTTPResponseSerializer.AFHTTPResponseSerializerSyntheticProvider):

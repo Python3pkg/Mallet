@@ -300,7 +300,7 @@ def get_package_dir_path(module, file_path):
     :rtype: str
     """
     # Get number of submodules.
-    modules = module.split(u".")
+    modules = module.split(".")
     modules_count = len(modules)
     step_count = modules_count - 1
     if step_count < 0:

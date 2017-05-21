@@ -23,8 +23,8 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from .. import helpers
-import SKRequest
-import SKProductsRequestInternal
+from . import SKRequest
+from . import SKProductsRequestInternal
 
 
 class SKProductsRequestSyntheticProvider(SKRequest.SKRequestSyntheticProvider):

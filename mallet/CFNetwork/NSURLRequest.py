@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..Foundation import NSObject
-import NSURLRequestInternal
+from . import NSURLRequestInternal
 
 NSURLRequestUseProtocolCachePolicy = 0
 NSURLRequestReloadIgnoringLocalCacheData = 1

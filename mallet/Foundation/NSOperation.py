@@ -23,8 +23,8 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from .. import helpers
-import NSObject
-import NSOperationInternal
+from . import NSObject
+from . import NSOperationInternal
 
 
 class NSOperationSyntheticProvider(NSObject.NSObjectSyntheticProvider):

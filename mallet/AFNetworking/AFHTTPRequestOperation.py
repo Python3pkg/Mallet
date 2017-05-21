@@ -23,7 +23,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from .. import helpers
-import AFURLConnectionOperation
+from . import AFURLConnectionOperation
 
 
 class AFHTTPRequestOperationSyntheticProvider(AFURLConnectionOperation.AFURLConnectionOperationSyntheticProvider):

@@ -25,8 +25,8 @@
 from .. import helpers
 from ..common import SummaryBase
 from ..CoreGraphics import CGSize
-import UIView
-import UIEdgeInsets
+from . import UIView
+from . import UIEdgeInsets
 
 
 class UIScrollViewSyntheticProvider(UIView.UIViewSyntheticProvider):

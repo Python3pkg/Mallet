@@ -31,5 +31,5 @@ def __lldb_init_module(debugger, internal_dict):
     :param dict internal_dict: Internal LLDB dictionary.
     """
     # Load commands and summaries.
-    import loader
+    from . import loader
     loader.get_shared_loader(debugger, internal_dict).load()

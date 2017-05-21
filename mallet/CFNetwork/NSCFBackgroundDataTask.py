@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import NSCFBackgroundSessionTask
+from . import NSCFBackgroundSessionTask
 
 
 class NSCFBackgroundDataTaskSyntheticProvider(NSCFBackgroundSessionTask.NSCFBackgroundSessionTaskSyntheticProvider):

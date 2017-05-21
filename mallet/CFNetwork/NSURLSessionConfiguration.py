@@ -25,8 +25,8 @@
 from .. import helpers
 from ..common import SummaryBase
 from ..Foundation import NSObject
-import NSURLRequest
-import NSHTTPCookieStorage
+from . import NSURLRequest
+from . import NSHTTPCookieStorage
 
 kSSLProtocolUnknown = 0
 kSSLProtocol3 = 2

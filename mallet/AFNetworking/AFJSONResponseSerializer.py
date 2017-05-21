@@ -25,7 +25,7 @@
 from .. import helpers
 from ..Foundation import NSJSONSerialization
 from ..common import SummaryBase
-import AFHTTPResponseSerializer
+from . import AFHTTPResponseSerializer
 
 
 class AFJSONResponseSerializerSyntheticProvider(AFHTTPResponseSerializer.AFHTTPResponseSerializerSyntheticProvider):

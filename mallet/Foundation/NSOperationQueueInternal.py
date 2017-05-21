@@ -24,9 +24,9 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import NSObject
-import NSOperation
-import NSOperationInternal
+from . import NSObject
+from . import NSOperation
+from . import NSOperationInternal
 
 
 class NSOperationQueueInternalSyntheticProvider(NSObject.NSObjectSyntheticProvider):

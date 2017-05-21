@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import UIResponder
+from . import UIResponder
 
 
 class UIViewControllerSyntheticProvider(UIResponder.UIResponderSyntheticProvider):

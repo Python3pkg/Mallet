@@ -27,8 +27,8 @@ from ..Foundation import NSObject
 from ..Foundation import NSOperationQueue
 from ..CFNetwork import NSURLSession
 from ..common import SummaryBase
-import AFSecurityPolicy
-import AFNetworkReachabilityManager
+from . import AFSecurityPolicy
+from . import AFNetworkReachabilityManager
 
 
 class AFURLSessionManagerSyntheticProvider(NSObject.NSObjectSyntheticProvider):

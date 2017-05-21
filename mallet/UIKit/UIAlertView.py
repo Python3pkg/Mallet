@@ -24,8 +24,8 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import UIView
-import UIAlertController
+from . import UIView
+from . import UIAlertController
 
 UIAlertViewStyleDefault = 0
 UIAlertViewStyleSecureTextInput = 1

@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import AFHTTPResponseSerializer
+from . import AFHTTPResponseSerializer
 
 
 class AFImageResponseSerializerSyntheticProvider(AFHTTPResponseSerializer.AFHTTPResponseSerializerSyntheticProvider):

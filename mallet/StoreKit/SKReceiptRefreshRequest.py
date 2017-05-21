@@ -23,7 +23,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from .. import helpers
-import SKRequest
+from . import SKRequest
 
 
 class SKReceiptRefreshRequestSyntheticProvider(SKRequest.SKRequestSyntheticProvider):

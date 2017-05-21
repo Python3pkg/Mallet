@@ -22,7 +22,7 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import helpers
+from . import helpers
 import lldb
 import logging
 
@@ -47,7 +47,7 @@ class TypeCache(object):
         :return: Returns SBType for given name.
         :rtype: lldb.SBType | None
         """
-        if isinstance(type_name, unicode):
+        if isinstance(type_name, str):
             type_name = type_name.encode('utf-8')
         is_pointer = type_name.endswith("*")
         only_type_name = type_name.rstrip("*").strip()
@@ -96,10 +96,10 @@ class TypeCache(object):
 
         # Get type from name.
         logger = logging.getLogger(__name__)
-        logger.info(u"Adding type \"{}\" to cache.".format(type_name))
+        logger.info("Adding type \"{}\" to cache.".format(type_name))
         t = self.__get_type_from_name(type_name, target)
         if not t:
-            logger.warning(u"Type \"{}\" doesn't exists.".format(type_name))
+            logger.warning("Type \"{}\" doesn't exists.".format(type_name))
         types[type_name] = t
         return t
 
@@ -122,7 +122,7 @@ class TypeCache(object):
 
         is64bit = helpers.is_64bit_architecture_from_target(target)
         logger = logging.getLogger(__name__)
-        logger.debug(u"Populating type cache for target {!r}.".format(target_id))
+        logger.debug("Populating type cache for target {!r}.".format(target_id))
 
         # char, unsigned char
         types = dict()
@@ -194,7 +194,7 @@ def get_type_cache():
     global __shared_type_cache
     if __shared_type_cache is None:
         logger = logging.getLogger(__name__)
-        logger.debug(u"Creating shared TypeCache.")
+        logger.debug("Creating shared TypeCache.")
         __shared_type_cache = TypeCache()
     return __shared_type_cache
 
@@ -206,5 +206,5 @@ def clean_type_cache():
     global __shared_type_cache
     if __shared_type_cache is not None:
         logger = logging.getLogger(__name__)
-        logger.debug(u"Cleaning shared TypeCache.")
+        logger.debug("Cleaning shared TypeCache.")
         __shared_type_cache.clean_cache()

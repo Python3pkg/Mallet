@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import NSObject
+from . import NSObject
 
 NSLayoutRelationLessThanOrEqual = 3
 NSLayoutRelationEqual = 0
@@ -240,18 +240,18 @@ class NSLayoutConstraintSyntheticProvider(NSObject.NSObjectSyntheticProvider):
         relation_sign = self.get_relation_sign(relation_flags)
         standard_value = self.get_is_standard_value(all_flags)
 
-        print("all_flags         : {0} {0:#x} {0:#b}".format(all_flags))
-        print("container         : {}".format(container))
-        print("first_item        : {}".format(first_item))
-        print("second_item       : {}".format(second_item))
-        print("first_item_flags  : {} {} {}".format(first_item_attribute, first_item_flags, bin(first_item_flags)))
-        print("second_item_flags : {} {} {}".format(second_item_attribute, second_item_flags, bin(second_item_flags)))
-        print("relation          : {} {}".format(relation_flags, relation_sign))
-        print("standard_value    : {}".format(standard_value))
-        print("multiplier        : {} {}".format(multiplier, multiplier_summary))
-        print("constant          : {} {}".format(constant, constant_summary))
-        print("priority          : {} {}".format(priority, priority_summary))
-        print("lowered_constant  : {}".format(self.lowered_constant_value))
+        print(("all_flags         : {0} {0:#x} {0:#b}".format(all_flags)))
+        print(("container         : {}".format(container)))
+        print(("first_item        : {}".format(first_item)))
+        print(("second_item       : {}".format(second_item)))
+        print(("first_item_flags  : {} {} {}".format(first_item_attribute, first_item_flags, bin(first_item_flags))))
+        print(("second_item_flags : {} {} {}".format(second_item_attribute, second_item_flags, bin(second_item_flags))))
+        print(("relation          : {} {}".format(relation_flags, relation_sign)))
+        print(("standard_value    : {}".format(standard_value)))
+        print(("multiplier        : {} {}".format(multiplier, multiplier_summary)))
+        print(("constant          : {} {}".format(constant, constant_summary)))
+        print(("priority          : {} {}".format(priority, priority_summary)))
+        print(("lowered_constant  : {}".format(self.lowered_constant_value)))
         print("==============================")
 
     def long_summary(self):

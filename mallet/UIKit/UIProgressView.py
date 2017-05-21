@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import UIView
+from . import UIView
 
 
 class UIProgressViewSyntheticProvider(UIView.UIViewSyntheticProvider):

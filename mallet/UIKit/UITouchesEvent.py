@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import UIInternalEvent
+from . import UIInternalEvent
 
 
 class UITouchesEventSyntheticProvider(UIInternalEvent.UIInternalEventSyntheticProvider):

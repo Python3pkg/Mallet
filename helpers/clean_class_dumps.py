@@ -25,8 +25,8 @@
 import os
 import imp
 
-i = imp.find_module(u"mallet", [u".."])
-imp.load_module(u"mallet", *i)
+i = imp.find_module("mallet", [".."])
+imp.load_module("mallet", *i)
 import mallet.class_dump as class_dump
 
 # Example offsets.json file:
@@ -62,8 +62,8 @@ def clean_class_dumps():
     current_dir, _ = os.path.split(current_dir)
 
     # Input / output folders.
-    input_dir = os.path.join(current_dir, u"ClassDumps")
-    output_dir = os.path.join(current_dir, u"../mallet")
+    input_dir = os.path.join(current_dir, "ClassDumps")
+    output_dir = os.path.join(current_dir, "../mallet")
 
     cdm = class_dump.ClassDumpManager()
     cdm.read_directory_path(input_dir)

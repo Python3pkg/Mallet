@@ -25,7 +25,7 @@
 from .. import helpers
 from ..Foundation import NSJSONSerialization
 from ..common import SummaryBase
-import AFHTTPRequestSerializer
+from . import AFHTTPRequestSerializer
 
 
 class AFJSONRequestSerializerSyntheticProvider(AFHTTPRequestSerializer.AFHTTPRequestSerializerSyntheticProvider):

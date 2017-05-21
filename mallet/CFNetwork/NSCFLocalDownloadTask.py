@@ -23,8 +23,8 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from .. import helpers
-import NSCFLocalSessionTask
-import NSCFLocalDownloadFile
+from . import NSCFLocalSessionTask
+from . import NSCFLocalDownloadFile
 
 
 class NSCFLocalDownloadTaskSyntheticProvider(NSCFLocalSessionTask.NSCFLocalSessionTaskSyntheticProvider):

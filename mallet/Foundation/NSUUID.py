@@ -24,7 +24,7 @@
 
 from .. import helpers
 import lldb
-import NSObject
+from . import NSObject
 
 
 class NSUUIDSyntheticProvider(NSObject.NSObjectSyntheticProvider):

@@ -54,7 +54,7 @@ def summary_provider(value_obj, internal_dict):
     class_name = helpers.get_object_class_name(value_obj)
 
     if class_name == "UITouchesEvent":
-        import UITouchesEvent
+        from . import UITouchesEvent
         return helpers.generic_summary_provider(value_obj, internal_dict, UITouchesEvent.UITouchesEventSyntheticProvider)
     else:
         return helpers.generic_summary_provider(value_obj, internal_dict, UIEventSyntheticProvider)

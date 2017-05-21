@@ -24,8 +24,8 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import UIView
-import UIImage
+from . import UIView
+from . import UIImage
 
 
 class UIImageViewSyntheticProvider(UIView.UIViewSyntheticProvider):

@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import UIViewController
+from . import UIViewController
 
 UIAlertControllerStyleActionSheet = 0
 UIAlertControllerStyleAlert = 1

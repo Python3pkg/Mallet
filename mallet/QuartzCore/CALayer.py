@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..Foundation import NSObject
-import CALayerIvars
+from . import CALayerIvars
 
 
 class CALayerSyntheticProvider(NSObject.NSObjectSyntheticProvider):

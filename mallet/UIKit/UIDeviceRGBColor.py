@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import UIColor
+from . import UIColor
 
 
 class UIDeviceRGBColorSyntheticProvider(UIColor.UIColorSyntheticProvider):

@@ -26,10 +26,10 @@ from .. import helpers
 from ..Foundation import NSObject
 from ..Foundation import NSOperationQueue
 from ..common import SummaryBase
-import AFHTTPRequestSerializer
-import AFHTTPResponseSerializer
-import AFSecurityPolicy
-import AFNetworkReachabilityManager
+from . import AFHTTPRequestSerializer
+from . import AFHTTPResponseSerializer
+from . import AFSecurityPolicy
+from . import AFNetworkReachabilityManager
 
 
 class AFHTTPRequestOperationManagerSyntheticProvider(NSObject.NSObjectSyntheticProvider):

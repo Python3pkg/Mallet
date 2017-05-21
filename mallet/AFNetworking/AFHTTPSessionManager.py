@@ -24,8 +24,8 @@
 
 from .. import helpers
 from ..common import SummaryBase
-import AFURLSessionManager
-import AFHTTPRequestSerializer
+from . import AFURLSessionManager
+from . import AFHTTPRequestSerializer
 
 
 class AFHTTPSessionManagerSyntheticProvider(AFURLSessionManager.AFURLSessionManagerSyntheticProvider):

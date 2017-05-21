@@ -24,7 +24,7 @@
 
 from .. import helpers
 from ..Foundation import NSObject
-import SKPaymentInternal
+from . import SKPaymentInternal
 
 
 class SKPaymentSyntheticProvider(NSObject.NSObjectSyntheticProvider):

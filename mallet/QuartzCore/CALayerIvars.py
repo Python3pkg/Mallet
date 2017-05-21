@@ -23,7 +23,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from ..common import SummaryBase
-import CALayerInternalLayer
+from . import CALayerInternalLayer
 
 
 class CALayerIvarsSyntheticProvider(SummaryBase.SummaryBaseSyntheticProvider):
